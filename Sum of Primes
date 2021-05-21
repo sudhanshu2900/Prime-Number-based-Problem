@@ -1,0 +1,35 @@
+PROBLEM: Your task is to calculate sum  of primes present as digits of given number N.
+
+Input: 333
+Output: 9
+
+Explaination: 3 is a prime number. It is present 3 times. So 3+3+3 = 9.
+
+
+SOLUTION:
+
+bool isPrime(int M){
+        if(M==1)return false;
+        for(int i=2;i*i<=M;i++){
+            if(M%i==0)
+                return false;
+        }
+        return true;
+    }
+    
+    int primeSum(int N){
+        int sum=0;
+        while(N>0){
+            int M = N%10;
+            N=N/10;
+            if(isPrime(M)){
+                sum+=M;
+            }
+        }
+        return sum;
+    }
+    
+    
+    
+    
+    
