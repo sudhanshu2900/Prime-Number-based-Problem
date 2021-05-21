@@ -1,0 +1,44 @@
+PROBLEM: Given two integers L and R, write a program that finds the count of numbers having prime number of set bits 
+         in their binary representation in the range [L, R].
+
+Input: L = 6, R = 10
+Output: 4
+
+Explanation: 6, 7, 9, 10 having prime set bits between 6 and 10. 
+6 -> 0110   (2 set bits)   ---  prime
+7 -> 0111   (3 set bits)   ---  prime
+8 -> 1000   (1 set bits)   ---  Not prime
+9 -> 1001   (2 set bits)   ---  prime
+10 -> 1010  (2 set bits)   ---  prime
+
+So, count is 4
+
+
+
+SOLUTION:
+
+bool isPrime(int n){
+        if(n==1)return false;
+        for(int j=2;j*j<=n;j++){
+            if(n%j==0){
+                return false;
+            }
+        }
+        return true;
+    }
+  
+    int primeSetBits(int L, int R){
+        int cnt=0;
+        for(int i=L;i<=R;i++){
+            int n = __builtin_popcount(i);
+            if(isPrime(n)){
+                cnt++;   
+            }
+        }
+        return cnt;
+    }
+    
+    
+    
+    
+
